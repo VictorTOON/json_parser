@@ -10,7 +10,49 @@ void yyerror(char *);
 
 %%
 
+\"[a-zA-Z0-9\.\,\-\:\;\ ]+\" {
+  return T;
+}
 
+[0-9]+ {
+  return I;
+}
+
+[0-9]+\.[0-9]+ {
+  return F;
+}
+
+[\{] {
+  return *yytext;
+}
+
+[\}] {
+  return *yytext;
+}
+
+[,] {
+  return *yytext;
+}
+
+[:] {
+  return *yytext;
+}
+
+[\[] {
+  return *yytext;
+}
+
+[\]] {
+  return *yytext;
+}
+
+[\[][\]] {
+  return abreFecha;
+}
+
+[[:space]] ;
+[\n]+ ;
+. ;
 
 %%
 
